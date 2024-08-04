@@ -4,7 +4,7 @@ var zoom = 1;
 
 function setup() {
   createCanvas(600, 600);
-  blob = new Blob(0, 0, 64);
+  blob = new Blobby(0, 0, 64);
   for (var i = 0; i < 50; i++) {
     var x = random(-width, width);
     var y = random(-height, height);
@@ -15,12 +15,12 @@ function setup() {
 function draw() {
   background(220);
 
-  translate(width/2, height/2);
+  translate(width / 2, height / 2);
   var newzoom = 64 / blob.r;
   zoom = lerp(zoom, newzoom, 0.1);
   scale(zoom);
   translate(-blob.pos.x, -blob.pos.y);
-  for (var i = blobs.length-1; i >= 0; i--) {
+  for (var i = blobs.length - 1; i >= 0; i--) {
     blobs[i].show();
     if (blob.eats(blobs[i])) {
       blobs.splice(i, 1);
